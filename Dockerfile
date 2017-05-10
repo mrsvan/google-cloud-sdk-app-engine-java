@@ -23,4 +23,6 @@ RUN apt-get update && \
   curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add - && \
   apt-get update && \
   apt-get upgrade -y && \
-  apt-get install -y google-cloud-sdk google-cloud-sdk-app-engine-java
+  apt-get install -y google-cloud-sdk google-cloud-sdk-app-engine-java && \
+  apt-get clean -y && \
+  apt-get autoclean -y
