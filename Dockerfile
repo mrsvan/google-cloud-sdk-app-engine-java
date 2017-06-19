@@ -13,7 +13,7 @@
 # 'echo $DEPLOY_KEY_FILE_PRODUCTION > .gitlab-ci.keyfile.json'
 # 'gcloud auth activate-service-account --key-file .gitlab-ci.keyfile.json'
 
-FROM maven:3.5-jdk-7-alpine
+FROM maven:3.5-jdk-8-alpine
 MAINTAINER Stefaan Vanderheyden <svd@nuuvo.mobi>
 ARG CLOUD_SDK_VERSION=157.0.0
 ARG SHA256SUM=95b98fc696f38cd8b219b4ee9828737081f2b5b3bd07a3879b7b2a6a5349a73f
