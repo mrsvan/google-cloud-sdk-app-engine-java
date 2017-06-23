@@ -19,6 +19,8 @@ ARG CLOUD_SDK_VERSION=157.0.0
 ARG SHA256SUM=95b98fc696f38cd8b219b4ee9828737081f2b5b3bd07a3879b7b2a6a5349a73f
 ENV PATH /google-cloud-sdk/bin:$PATH
 RUN apk --no-cache add git curl python bash libc6-compat && \
+    apk update && \
+    apk add ca-certificates wget && \
     curl -L -o crcmod.tar.gz "https://downloads.sourceforge.net/project/crcmod/crcmod/crcmod-1.7/crcmod-1.7.tar.gz" && \
     tar -xzf crcmod.tar.gz && \
     cd crcmod-1.7/ && \
