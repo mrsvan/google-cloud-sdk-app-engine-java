@@ -33,6 +33,6 @@ RUN apk --no-cache add git curl python bash libc6-compat && \
     gcloud config set core/disable_usage_reporting true && \
     gcloud config set component_manager/disable_update_check true && \
     gcloud config set metrics/environment github_docker_image && \
-    apt-get apk update && \
+    apk update && \
     apk add ca-certificates wg
 VOLUME ["/root/.config"]
