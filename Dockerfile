@@ -13,17 +13,26 @@
 # 'echo $DEPLOY_KEY_FILE_PRODUCTION > .gitlab-ci.keyfile.json'
 # 'gcloud auth activate-service-account --key-file .gitlab-ci.keyfile.json'
 
-FROM maven:3.3.9-jdk-7
-
+FROM maven:3.5-jdk-8-alpine
 MAINTAINER Stefaan Vanderheyden <svd@nuuvo.mobi>
-
-RUN apt-get update && \
-  apt-get install -y apt-transport-https && \
-  apt-get apk update && \
-  apk add ca-certificates wg
-  echo "deb https://packages.cloud.google.com/apt cloud-sdk-jessie main" | tee /etc/apt/sources.list.d/google-cloud-sdk.list && \
-  curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add - && \
-  apt-get update && \
-  apt-get upgrade -y && \
-  apt-get install -y google-cloud-sdk google-cloud-sdk-app-engine-java && \
-  apt-get install rsync && \
+ARG CLOUD_SDK_VERSION=157.0.0
+ARG SHA256SUM=95b98fc696f38cd8b219b4ee9828737081f2b5b3bd07a3879b7b2a6a5349a73f
+ENV PATH /google-cloud-sdk/bin:$PATH
+RUN apk --no-cache add git curl python bash libc6-compat && \
+    curl -L -o crcmod.tar.gz "https://downloads.sourceforge.net/project/crcmod/crcmod/crcmod-1.7/crcmod-1.7.tar.gz" && \
+    tar -xzf crcmod.tar.gz && \
+    cd crcmod-1.7/ && \
+    python setup.py install && \
+    cd .. && \
+    curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-${CLOUD_SDK_VERSION}-linux-x86_64.tar.gz && \
+    echo "${SHA256SUM}  google-cloud-sdk-${CLOUD_SDK_VERSION}-linux-x86_64.tar.gz" > google-cloud-sdk-${CLOUD_SDK_VERSION}-linux-x86_64.tar.gz.sha256 && \
+    sha256sum -c google-cloud-sdk-${CLOUD_SDK_VERSION}-linux-x86_64.tar.gz.sha256 && \
+    tar xzf google-cloud-sdk-${CLOUD_SDK_VERSION}-linux-x86_64.tar.gz && \
+    rm google-cloud-sdk-${CLOUD_SDK_VERSION}-linux-x86_64.tar.gz google-cloud-sdk-${CLOUD_SDK_VERSION}-linux-x86_64.tar.gz.sha256 && \
+    ln -s /lib /lib64 && \
+    gcloud config set core/disable_usage_reporting true && \
+    gcloud config set component_manager/disable_update_check true && \
+    gcloud config set metrics/environment github_docker_image && \
+    apt-get apk update && \
+    apk add ca-certificates wg
+VOLUME ["/root/.config"]
