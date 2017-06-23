@@ -24,4 +24,5 @@ RUN apt-get update && \
   apt-get update && \
   apt-get upgrade -y && \
   apt-get install -y google-cloud-sdk google-cloud-sdk-app-engine-java && \
-  apt-get install rsync
+  apt-get install rsync \
+  apt-get install -y openssl
