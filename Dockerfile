@@ -1,19 +1,5 @@
-# A very rudimentary maven container with google-cloud-skd-app-engine-java installed.
-#
-# This container is very useful for building GAE applications using the latest appengine-maven-plugin:
-# 
-# <dependency>
-#     <groupId>com.google.cloud.tools</groupId>
-#     <artifactId>appengine-maven-plugin</artifactId>
-#     <version>1.1.0-beta</version>
-# </dependency>
-# 
-# Before you can use the plugin to upload your GAE app, you need to configure the authentication:
-# 
-# 'echo $DEPLOY_KEY_FILE_PRODUCTION > .gitlab-ci.keyfile.json'
-# 'gcloud auth activate-service-account --key-file .gitlab-ci.keyfile.json'
-
 FROM caarlos0/alpine-oraclejdk7:latest
+
 MAINTAINER Stefaan Vanderheyden <svd@nuuvo.mobi>
 ARG CLOUD_SDK_VERSION=157.0.0
 ARG SHA256SUM=95b98fc696f38cd8b219b4ee9828737081f2b5b3bd07a3879b7b2a6a5349a73f
@@ -43,4 +29,3 @@ RUN apk add --update wget && \
     gcloud config set core/disable_usage_reporting true && \
     gcloud config set component_manager/disable_update_check true && \
     gcloud config set metrics/environment github_docker_image
-
