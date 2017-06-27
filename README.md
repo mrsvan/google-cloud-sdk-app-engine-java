@@ -34,6 +34,4 @@ gcloud auth activate-service-account --key-file .gitlab-ci.keyfile.json
 [![Docker Pulls](https://img.shields.io/docker/pulls/mrsvan/google-cloud-sdk-app-engine-java.svg?style=flat-square)]()
 [![Docker Strars](https://img.shields.io/docker/stars/mrsvan/google-cloud-sdk-app-engine-java.svg?style=flat-square)]()
  
-This dockerfile is published automatically to the docker repository: https://hub.docker.com/r/mleclaire/google-cloud-sdk-app-engine-java/  
-
 This dockerfile is originally published to the docker repository: https://hub.docker.com/r/mrsvan/google-cloud-sdk-app-engine-java/ 
