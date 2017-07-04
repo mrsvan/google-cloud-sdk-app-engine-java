@@ -14,6 +14,8 @@ RUN apk add --update wget && \
     ln -s "$M2_HOME/bin/mvn" /usr/bin/mvn && \
     apk del wget && \
     apk add git curl python bash libc6-compat && \
+    echo "Add jq for parsing GitLab API responses" && \
+    apk add jq  && \
     rm /tmp/* /var/cache/apk/* && \
     curl -L -o crcmod.tar.gz "https://downloads.sourceforge.net/project/crcmod/crcmod/crcmod-1.7/crcmod-1.7.tar.gz" && \
     tar -xzf crcmod.tar.gz && \
