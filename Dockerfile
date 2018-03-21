@@ -1,10 +1,10 @@
-FROM caarlos0/alpine-oraclejdk7:latest
+FROM cantara/alpine-openjdk-jdk8
 
 MAINTAINER Stefaan Vanderheyden <svd@nuuvo.mobi>
 ARG CLOUD_SDK_VERSION=157.0.0
 ARG SHA256SUM=95b98fc696f38cd8b219b4ee9828737081f2b5b3bd07a3879b7b2a6a5349a73f
 ENV PATH /google-cloud-sdk/bin:$PATH
-ENV MAVEN_VERSION="3.2.5" \
+ENV MAVEN_VERSION="3.3.9" \
     M2_HOME=/root/.m2/
 RUN apk add --update wget && \
     cd /tmp && \
@@ -14,6 +14,8 @@ RUN apk add --update wget && \
     ln -s "$M2_HOME/bin/mvn" /usr/bin/mvn && \
     apk del wget && \
     apk add git curl python bash libc6-compat && \
+    echo "Add jq for parsing GitLab API responses" && \
+    apk add jq  && \
     rm /tmp/* /var/cache/apk/* && \
     curl -L -o crcmod.tar.gz "https://downloads.sourceforge.net/project/crcmod/crcmod/crcmod-1.7/crcmod-1.7.tar.gz" && \
     tar -xzf crcmod.tar.gz && \
