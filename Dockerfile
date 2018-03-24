@@ -1,4 +1,4 @@
-FROM frolvlad/alpine-oraclejdk8:8.161.12-slim
+FROM cantara/alpine-openjdk-jdk8
 
 MAINTAINER Stefaan Vanderheyden <svd@nuuvo.mobi>
 ARG CLOUD_SDK_VERSION=157.0.0
