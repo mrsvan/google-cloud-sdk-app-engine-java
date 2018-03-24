@@ -1,4 +1,4 @@
-FROM cantara/alpine-openjdk-jdk8
+FROM openjdk:8-jdk-alpine
 
 MAINTAINER Stefaan Vanderheyden <svd@nuuvo.mobi>
 ARG CLOUD_SDK_VERSION=157.0.0
