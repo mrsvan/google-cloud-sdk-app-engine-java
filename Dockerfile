@@ -2,7 +2,7 @@ FROM cantara/alpine-openjdk-jdk8
 
 MAINTAINER Stefaan Vanderheyden <svd@nuuvo.mobi>
 ARG CLOUD_SDK_VERSION=194.0.0
-ARG SHA256SUM=95b98fc696f38cd8b219b4ee9828737081f2b5b3bd07a3879b7b2a6a5349a73f
+ARG SHA256SUM=bc8128569b8c1c4f53512f95bce66efedec60ab6f877f39472373b4e610ab09c
 ENV PATH /google-cloud-sdk/bin:$PATH
 ENV MAVEN_VERSION="3.3.9" \
     M2_HOME=/root/.m2/
