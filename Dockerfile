@@ -1,4 +1,4 @@
-FROM frolvlad/alpine-oraclejdk8:8.161.12-cleaned
+FROM frolvlad/alpine-oraclejdk8:8.161.12-full
 
 MAINTAINER Stefaan Vanderheyden <svd@nuuvo.mobi>
 ARG CLOUD_SDK_VERSION=194.0.0
