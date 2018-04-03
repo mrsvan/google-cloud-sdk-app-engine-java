@@ -4,11 +4,12 @@ MAINTAINER Stefaan Vanderheyden <svd@nuuvo.mobi>
 ARG CLOUD_SDK_VERSION=194.0.0
 ARG SHA256SUM=bc8128569b8c1c4f53512f95bce66efedec60ab6f877f39472373b4e610ab09c
 ENV PATH /google-cloud-sdk/bin:$PATH
-ENV MAVEN_VERSION="3.3.9" \
+ENV MAVEN_VERSION="3.5.3" \
     M2_HOME=/root/.m2/
-RUN apk add --update wget && \
+RUN sed -i 's/http\:\/\/dl-cdn.alpinelinux.org/https\:\/\/alpine.global.ssl.fastly.net/g' /etc/apk/repositories && \
+	apk add --update wget && \
     cd /tmp && \
-    wget "http://ftp.unicamp.br/pub/apache/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz" && \
+    wget "https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/$MAVEN_VERSION/apache-maven-$MAVEN_VERSION-bin.tar.gz" && \
     tar -zxvf "apache-maven-$MAVEN_VERSION-bin.tar.gz" && \
     mv "apache-maven-$MAVEN_VERSION" "$M2_HOME" && \
     ln -s "$M2_HOME/bin/mvn" /usr/bin/mvn && \
