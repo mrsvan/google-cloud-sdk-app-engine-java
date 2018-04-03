@@ -14,7 +14,7 @@ RUN sed -i 's/http\:\/\/dl-cdn.alpinelinux.org/https\:\/\/alpine.global.ssl.fast
     mv "apache-maven-$MAVEN_VERSION" "$M2_HOME" && \
     ln -s "$M2_HOME/bin/mvn" /usr/bin/mvn && \
     apk del wget && \
-    apk add git curl python bash && \
+    apk add git curl python bash procps && \
     echo "Add jq for parsing GitLab API responses" && \
     apk add jq  && \
     rm /tmp/* /var/cache/apk/* && \
