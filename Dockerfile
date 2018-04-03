@@ -13,7 +13,7 @@ RUN apk add --update wget && \
     mv "apache-maven-$MAVEN_VERSION" "$M2_HOME" && \
     ln -s "$M2_HOME/bin/mvn" /usr/bin/mvn && \
     apk del wget && \
-    apk add git curl python bash libc6-compat && \
+    apk add git curl python bash && \
     echo "Add jq for parsing GitLab API responses" && \
     apk add jq  && \
     rm /tmp/* /var/cache/apk/* && \
