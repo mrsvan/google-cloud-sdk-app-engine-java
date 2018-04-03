@@ -7,7 +7,7 @@
 [![GitHub closed issues](https://img.shields.io/github/issues-closed/mrsvan/google-cloud-sdk-app-engine-java.svg?style=flat-square)]()
 [![GitHub pull requests](https://img.shields.io/github/issues-pr/mrsvan/google-cloud-sdk-app-engine-java.svg?style=flat-square)]()
 
-A very rudimentary maven container with google-cloud-skd-app-engine-java installed.
+A very rudimentary maven container with google-cloud-skd-app-engine-java installed, running on an alpine image with JDK8.
 
 This container is very useful for building GAE applications using the latest appengine-maven-plugin:
 
