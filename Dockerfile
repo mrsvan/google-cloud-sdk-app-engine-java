@@ -1,8 +1,8 @@
-FROM openjdk:8-jdk-alpine
+FROM cantara/alpine-openjdk-jdk8
 
 MAINTAINER Stefaan Vanderheyden <svd@nuuvo.mobi>
-ARG CLOUD_SDK_VERSION=157.0.0
-ARG SHA256SUM=95b98fc696f38cd8b219b4ee9828737081f2b5b3bd07a3879b7b2a6a5349a73f
+ARG CLOUD_SDK_VERSION=194.0.0
+ARG SHA256SUM=bc8128569b8c1c4f53512f95bce66efedec60ab6f877f39472373b4e610ab09c
 ENV PATH /google-cloud-sdk/bin:$PATH
 ENV MAVEN_VERSION="3.3.9" \
     M2_HOME=/root/.m2/
@@ -30,4 +30,5 @@ RUN apk add --update wget && \
     ln -s /lib /lib64 && \
     gcloud config set core/disable_usage_reporting true && \
     gcloud config set component_manager/disable_update_check true && \
-    gcloud config set metrics/environment github_docker_image
+    gcloud config set metrics/environment github_docker_image && \
+    gcloud components install app-engine-java
