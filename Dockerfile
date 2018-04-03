@@ -1,4 +1,4 @@
-FROM frolvlad/alpine-oraclejdk8:8.161.12-full
+FROM openjdk:8-jdk-alpine
 
 MAINTAINER Stefaan Vanderheyden <svd@nuuvo.mobi>
 ARG CLOUD_SDK_VERSION=194.0.0
@@ -14,7 +14,7 @@ RUN sed -i 's/http\:\/\/dl-cdn.alpinelinux.org/https\:\/\/alpine.global.ssl.fast
     mv "apache-maven-$MAVEN_VERSION" "$M2_HOME" && \
     ln -s "$M2_HOME/bin/mvn" /usr/bin/mvn && \
     apk del wget && \
-    apk add git curl python bash procps && \
+    apk add git curl tar python bash procps && \
     echo "Add jq for parsing GitLab API responses" && \
     apk add jq  && \
     rm /tmp/* /var/cache/apk/* && \
